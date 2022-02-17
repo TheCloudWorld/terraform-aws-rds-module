@@ -25,3 +25,8 @@ resource "aws_db_instance" "db_instance" {
   allocated_storage        = 20
 }
 
+resource "aws_db_instance_role_association" "db_role" {
+  db_instance_identifier = aws_db_instance.db_instance.id
+  feature_name           = "S3_INTEGRATION"
+  role_arn               = "arn:aws:iam::667481606687:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS"
+}
